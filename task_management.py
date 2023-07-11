@@ -5,12 +5,12 @@ def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 # Fungsi untuk menyimpan tugas ke dalam file
-def simpan_ke_file(tugas):
+def simpan(tugas):
     with open('data_tugas.json', 'w') as file:
         json.dump(tugas, file)  
 
 # Fungsi untuk membaca tugas dari file
-def baca_dari_file():
+def baca():
     try:
         with open('data_tugas.json', 'r') as file:
             tugas = json.load(file)
@@ -19,8 +19,8 @@ def baca_dari_file():
     return tugas
 
 # Fungsi untuk menampilkan semua tugas
-def tampilkan_tugas():
-    tugas = baca_dari_file()
+def tampil():
+    tugas = baca()
     if tugas:
         print("Daftar Tugas:")
         for idx, t in enumerate(tugas, start=1):
@@ -29,23 +29,23 @@ def tampilkan_tugas():
         print("Belum ada tugas yang tersimpan.")
 
 # Fungsi untuk menambahkan tugas baru
-def tambahkan_tugas():
-    tugas = baca_dari_file()
+def tambah():
+    tugas = baca()
     tugas_baru = input("Masukkan tugas baru: ")
     tugas.append(tugas_baru)
-    simpan_ke_file(tugas)
+    simpan(tugas)
     print("Tugas berhasil ditambahkan.")
 
 # Fungsi untuk memperbarui tugas yang ada
-def perbarui_tugas():
-    tugas = baca_dari_file()
+def edit():
+    tugas = baca()
     if tugas:
-        tampilkan_tugas()
+        tampil()
         indeks_tugas = int(input("\nPilih nomor tugas yang akan diperbarui: ")) - 1
         if 0 <= indeks_tugas < len(tugas):
             tugas_baru = input("Masukkan tugas yang diperbarui: ")
             tugas[indeks_tugas] = tugas_baru
-            simpan_ke_file(tugas)
+            simpan(tugas)
             print("Tugas berhasil diperbarui.")
         else:
             print("Nomor tugas tidak valid.")
@@ -53,15 +53,15 @@ def perbarui_tugas():
         print("Belum ada tugas yang tersimpan.")
 
 # Fungsi untuk menghapus tugas yang ada
-def hapus_tugas():
-    tugas = baca_dari_file()
+def hapus():
+    tugas = baca()
     if tugas:
         clear()
-        tampilkan_tugas()
+        tampil()
         indeks_tugas = int(input("\nPilih nomor tugas yang akan dihapus: ")) - 1
         if 0 <= indeks_tugas < len(tugas):
             tugas.pop(indeks_tugas)
-            simpan_ke_file(tugas)
+            simpan(tugas)
             print("Tugas berhasil dihapus.")
         else:
             print("Nomor tugas tidak valid.")
@@ -83,15 +83,15 @@ def menu():
         
         if pilihan == '1':
             clear()
-            tampilkan_tugas()
+            tampil()
         elif pilihan == '2':
             clear()
-            tambahkan_tugas()
+            tambah()
         elif pilihan == '3':
             clear()
-            perbarui_tugas()
+            edit()
         elif pilihan == '4':
-            hapus_tugas()
+            hapus()
         elif pilihan == '0':
             break
         else:

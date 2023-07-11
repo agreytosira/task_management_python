@@ -41,7 +41,7 @@ def perbarui_tugas():
     tugas = baca_dari_file()
     if tugas:
         tampilkan_tugas()
-        indeks_tugas = int(input("Pilih nomor tugas yang akan diperbarui: ")) - 1
+        indeks_tugas = int(input("\nPilih nomor tugas yang akan diperbarui: ")) - 1
         if 0 <= indeks_tugas < len(tugas):
             tugas_baru = input("Masukkan tugas yang diperbarui: ")
             tugas[indeks_tugas] = tugas_baru
@@ -58,7 +58,7 @@ def hapus_tugas():
     if tugas:
         clear()
         tampilkan_tugas()
-        indeks_tugas = int(input("Pilih nomor tugas yang akan dihapus: ")) - 1
+        indeks_tugas = int(input("\nPilih nomor tugas yang akan dihapus: ")) - 1
         if 0 <= indeks_tugas < len(tugas):
             tugas.pop(indeks_tugas)
             simpan_ke_file(tugas)
@@ -71,12 +71,13 @@ def hapus_tugas():
 # Menu utama
 def menu():
     while True:
-        print("\n===== Aplikasi Manajemen Tugas berbasis Python =====\n")
+        print("\n===== Aplikasi Manajemen Tugas berbasis Python =====")
+        print("============= Developed by Agrey Tosira ============\n")
         print("1. Tampilkan Daftar Tugas")
         print("2. Tambahkan Tugas")
         print("3. Perbarui Tugas")
         print("4. Hapus Tugas")
-        print("0. Keluar")
+        print("0. Keluar\n")
 
         pilihan = input("Masukkan pilihan (0-4): ")
         

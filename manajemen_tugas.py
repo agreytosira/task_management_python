@@ -4,12 +4,10 @@ import os
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-# Fungsi untuk menyimpan tugas ke dalam file
 def simpan(tugas):
     with open('data_tugas.json', 'w') as file:
         json.dump(tugas, file)  
 
-# Fungsi untuk membaca tugas dari file
 def baca():
     try:
         with open('data_tugas.json', 'r') as file:
@@ -18,7 +16,6 @@ def baca():
         tugas = []
     return tugas
 
-# Fungsi untuk menampilkan semua tugas
 def tampil():
     tugas = baca()
     if tugas:
@@ -33,7 +30,6 @@ def tampil():
         clear()
         print("Belum ada tugas yang tersimpan.")
 
-# Fungsi untuk menambahkan tugas baru
 def tambah():
     tugas = baca()
     tugas_baru = input("Masukkan tugas baru: ")
@@ -42,7 +38,6 @@ def tambah():
     simpan(tugas)
     print("Tugas berhasil ditambahkan.")
 
-# Fungsi untuk memperbarui tugas yang ada
 def edit():
     tugas = baca()
     if tugas:
@@ -60,7 +55,6 @@ def edit():
         clear()
         print("Belum ada tugas yang tersimpan.")
 
-# Fungsi untuk menghapus tugas yang ada
 def hapus():
     tugas = baca()
     if tugas:
@@ -77,7 +71,6 @@ def hapus():
         clear()
         print("Belum ada tugas yang tersimpan.")
 
-# Menu utama
 def menu():
     while True:
         print("\n===== Aplikasi Manajemen Tugas berbasis Python =====")
@@ -107,5 +100,4 @@ def menu():
             clear()
             print("Pilihan tidak valid.")
 
-# Menjalankan aplikasi
 menu()
